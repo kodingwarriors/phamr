@@ -8,6 +8,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Application as MvcApplication;
+use Phalcon\Support\HelperFactory;
 
 class Application
 {
@@ -43,7 +44,6 @@ class Application
         $this->app->registerModules($this->modulesInit());
 
         $this->di->setShared(self::APPLICATION_PROVIDER, $this);
-
         $this->initializeProviders();
     }
 
@@ -103,6 +103,7 @@ class Application
 
     private function modulesInit()
     {
+        $helper = new HelperFactory();
         $filename = $this->rootPath . '/config/modules.php';
         if (!file_exists($filename) || !is_readable($filename)) {
             throw new Exception('File modules.php does not exist or is not readable.');
@@ -111,7 +112,7 @@ class Application
         $modules = array();
         if(!empty($modules_name)){
             foreach ($modules_name as $module) {
-                $simple = Text::uncamelize($module);
+                $simple = $helper->uncamelize($module);
                 $simple = str_replace('_', '-', $simple);
                 $modules[$simple] = array(
                     'namespace' => 'Modules\\'.ucfirst($module),

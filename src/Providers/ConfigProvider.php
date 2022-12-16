@@ -2,26 +2,30 @@
 declare(strict_types=1);
 
 /**
- * This file is part of the Phamr.
+ * This file is part of the Vökuró.
  *
- * (c) KodingWarriors Team <dwi.agus.pur@gmail.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
 
 namespace Phamr\Providers;
+
+use Phalcon\Config\Config;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 use Phamr\Application;
-use Phamr\Plugins\Acl\Acl;
 
-class AclProvider implements ServiceProviderInterface
+/**
+ * Register the global configuration as config
+ */
+class ConfigProvider implements ServiceProviderInterface
 {
     /**
      * @var string
      */
-    protected $providerName = 'acl';
+    protected $providerName = 'config';
 
     /**
      * @param DiInterface $di
@@ -36,19 +40,9 @@ class AclProvider implements ServiceProviderInterface
         $rootPath = $application->getRootPath();
 
         $di->setShared($this->providerName, function () use ($rootPath) {
-            $filename         = $rootPath . '/config/acl.php';
-            $privateResources = [];
-            if (is_readable($filename)) {
-                $privateResources = include $filename;
-                if (!empty($privateResources['private'])) {
-                    $privateResources = $privateResources['private'];
-                }
-            }
+            $config = include $rootPath . '/config/config.php';
 
-            $acl = new Acl();
-            $acl->addPrivateResources($privateResources);
-
-            return $acl;
+            return new Config($config);
         });
     }
 }
