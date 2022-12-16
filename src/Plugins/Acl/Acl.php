@@ -21,7 +21,7 @@ use Phalcon\Di\Injectable;
 use Phamr\Models\Profiles;
 
 /**
- * Vokuro\Acl\Acl
+ * Phamr\Plugins\Acl
  */
 class Acl extends Injectable
 {

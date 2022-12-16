@@ -14,8 +14,8 @@ namespace Phamr\Controllers;
 
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
-use Vokuro\Forms\ProfilesForm;
-use Vokuro\Models\Profiles;
+use Phamr\Forms\ProfilesForm;
+use Phamr\Models\Profiles;
 
 /**
  * Vokuro\Controllers\ProfilesController

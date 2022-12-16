@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Phamr\Controllers;
 
-use Vokuro\Models\Permissions;
-use Vokuro\Models\Profiles;
+use Phamr\Models\Permissions;
+use Phamr\Models\Profiles;
 
 /**
  * View and define permissions for the various profile levels.

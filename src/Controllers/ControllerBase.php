@@ -14,8 +14,8 @@ namespace Phamr\Controllers;
 
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Dispatcher;
-use Vokuro\Plugins\Acl\Acl;
-use Vokuro\Plugins\Auth\Auth;
+use Phamr\Plugins\Acl\Acl;
+use Phamr\Plugins\Auth\Auth;
 
 /**
  * ControllerBase

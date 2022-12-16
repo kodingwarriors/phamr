@@ -12,12 +12,12 @@ declare(strict_types=1);
 
 namespace Phamr\Controllers;
 
-use Vokuro\Forms\ForgotPasswordForm;
-use Vokuro\Forms\LoginForm;
-use Vokuro\Forms\SignUpForm;
-use Vokuro\Models\ResetPasswords;
-use Vokuro\Models\Users;
-use Vokuro\Plugins\Auth\Exception as AuthException;
+use Phamr\Forms\ForgotPasswordForm;
+use Phamr\Forms\LoginForm;
+use Phamr\Forms\SignUpForm;
+use Phamr\Models\ResetPasswords;
+use Phamr\Models\Users;
+use Phamr\Plugins\Auth\Exception as AuthException;
 
 /**
  * Controller used handle non-authenticated session actions like login/logout,

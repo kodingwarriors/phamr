@@ -15,6 +15,8 @@ namespace Phamr\Providers;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Assets\Manager;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\TagFactory;
 
 class AssetsProvider implements ServiceProviderInterface
 {
@@ -31,7 +33,8 @@ class AssetsProvider implements ServiceProviderInterface
      */
     public function register(DiInterface $di): void
     {
-        $assetManager = new Manager();
+        $tagFactory = new TagFactory(new Escaper());
+        $assetManager = new Manager($tagFactory);
 
         $di->setShared($this->providerName, function () use ($assetManager) {
 

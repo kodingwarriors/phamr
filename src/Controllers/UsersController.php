@@ -14,10 +14,10 @@ namespace Phamr\Controllers;
 
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\QueryBuilder as Paginator;
-use Vokuro\Forms\ChangePasswordForm;
-use Vokuro\Forms\UsersForm;
-use Vokuro\Models\PasswordChanges;
-use Vokuro\Models\Users;
+use Phamr\Forms\ChangePasswordForm;
+use Phamr\Forms\UsersForm;
+use Phamr\Models\PasswordChanges;
+use Phamr\Models\Users;
 
 /**
  * Vokuro\Controllers\UsersController

@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace Phamr\Controllers;
 
-use Vokuro\Models\EmailConfirmations;
-use Vokuro\Models\ResetPasswords;
-use Vokuro\Models\Users;
+use Phamr\Models\EmailConfirmations;
+use Phamr\Models\ResetPasswords;
+use Phamr\Models\Users;
 
 /**
  * UserControlController
