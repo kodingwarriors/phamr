@@ -31,6 +31,11 @@ services:
             - "9008:9000"
         networks:
             - webapp
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200m"
+                max-file: "10"
 
     postgres:
         image: postgres:12.3-alpine

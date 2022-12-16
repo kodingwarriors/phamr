@@ -18,15 +18,18 @@ RUN set -xe && \
             zlib-dev \
             libxpm-dev \
             gd \
-            postgresql-dev \
+            postgresql \
         && docker-php-ext-install pdo pdo_pgsql gd \
-        && docker-php-source extract \
-        && pecl channel-update pecl.php.net \
-        && pecl install phalcon-5.1.2 && \
-        && docker-php-ext-install phalcon \
+        && pecl install phalcon-5.1.2 \
+        && docker-php-ext-enable phalcon \
+#        && docker-php-source extract \
+#        && pecl channel-update pecl.php.net \
+#        && pecl install phalcon-5.1.2 \
+#        && docker-php-ext-install phalcon \
+#        && echo "extension=phalcon.so" > /usr/local/etc/php/conf.d/phalcon.ini &&\
     # Install ext-phalcon
-#        curl -LO https://github.com/phalcon/cphalcon/archive/refs/tags/v${PHALCON_VERSION}.tar.gz && \
-#        tar xzf /cphalcon-${PHALCON_VERSION}.tar.gz && \
+#        curl -LO https://github.com/phalcon/cphalcon/archive/v${PHALCON_VERSION}.tar.gz && \
+#        tar xzf /v${PHALCON_VERSION}.tar.gz && \
 #        docker-php-ext-install -j $(getconf _NPROCESSORS_ONLN) \
 #            /cphalcon-${PHALCON_VERSION}/build/phalcon \
 #        && \
@@ -34,8 +37,8 @@ RUN set -xe && \
 #        rm -r \
 #            /v${PHALCON_VERSION}.tar.gz \
 #            /cphalcon-${PHALCON_VERSION} \
-#        && \
-#        docker-php-source delete && \
+        && \
+        docker-php-source delete && \
         apk del .build-deps && \
         php -m
 
