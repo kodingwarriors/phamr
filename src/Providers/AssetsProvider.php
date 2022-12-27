@@ -35,8 +35,8 @@ class AssetsProvider implements ServiceProviderInterface
     {
         $tagFactory = new TagFactory(new Escaper());
         $assetManager = new Manager($tagFactory);
-
-        $di->setShared($this->providerName, function () use ($assetManager) {
+        $config = $di->getShared('config')->get('application');
+        $di->setShared($this->providerName, function () use ($assetManager, $config) {
 
             $assetManager->collection('css')
                 ->addCss(

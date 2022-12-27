@@ -39,14 +39,21 @@ class RouterProvider implements ServiceProviderInterface
 
         $di->set($this->providerName, function () use ($basePath) {
             $router = new Router();
-
             $routes = $basePath . '/config/routes.php';
+            $modulesFile  = $basePath . '/config/modules.php';
             if (!file_exists($routes) || !is_readable($routes)) {
                 throw new Exception($routes . ' file does not exist or is not readable.');
             }
-
+            if (!file_exists($modulesFile) || !is_readable($modulesFile)) {
+                throw new Exception($modulesFile . ' file does not exist or is not readable.');
+            }
             require_once $routes;
-
+            $modules = include $modulesFile;
+            foreach ($modules as $module){
+                if(file_exists($basePath . '/modules/'.$module.'/router.php')){
+                    require_once $basePath . '/modules/'.$module.'/router.php';
+                }
+            }
             return $router;
         });
     }

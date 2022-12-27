@@ -25,4 +25,9 @@ class IndexController extends ControllerBase
         $this->view->setVar('logged_in', is_array($this->auth->getIdentity()));
         $this->view->setTemplateBefore('public');
     }
+
+    public function notfoundAction()
+    {
+        echo "404";
+    }
 }

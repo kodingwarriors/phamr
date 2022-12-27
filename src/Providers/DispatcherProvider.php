@@ -32,7 +32,7 @@ class DispatcherProvider implements ServiceProviderInterface
     {
         $di->set($this->providerName, function () {
             $dispatcher = new Dispatcher();
-            $dispatcher->setDefaultNamespace('Phamr\Controllers');
+            $dispatcher->setDefaultNamespace('Phamr\Modules\Frontend\Controllers');
 
             return $dispatcher;
         });

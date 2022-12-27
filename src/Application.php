@@ -115,8 +115,8 @@ class Application
                 $simple = $helper->uncamelize($module);
                 $simple = str_replace('_', '-', $simple);
                 $modules[$simple] = array(
-                    'namespace' => 'Modules\\'.ucfirst($module),
-                    'className' => 'Modules\\'.ucfirst($module) . '\Modules',
+                    'namespace' => 'Phamr\Modules\\'.ucfirst($module),
+                    'className' => 'Phamr\Modules\\'.ucfirst($module) . '\Modules',
                     'path' => $this->rootPath . '/modules/' . $module . '/Modules.php'
                 );
             }
