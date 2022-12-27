@@ -2,12 +2,12 @@
 /**
  * This file is part of the Phamr.
  *
- * (c) Phalcon Team <team@phalcon.io>
  *
- * For the full copyright and license information, please view
- * the LICENSE file that was distributed with this source code.
+ *
+ *
  */
 
+use Phalcon\Http\Response;
 use Phamr\Application as Bootstrap;
 
 error_reporting(E_ALL);
@@ -22,10 +22,14 @@ try {
     Dotenv\Dotenv::create($rootPath)->load();
 
     /**
-     * Run Vökuró!
+     * Run Phamr!
      */
     echo (new Bootstrap($rootPath))->run();
+    //phpinfo();
 } catch (Exception $e) {
-    echo $e->getMessage(), '<br>';
-    echo nl2br(htmlentities($e->getTraceAsString()));
+    header('Location: '.getenv('APP_BASE_URI').'404');
+    //echo $e->getMessage(), '<br>';
+    //print_r($e->getTraceAsString());
+    //echo $e->getTraceAsString();
+    //echo nl2br(htmlentities($e->getTraceAsString()));
 }
