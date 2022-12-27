@@ -25,3 +25,10 @@ $router->add('/reset-password/{code}/{email}', [
     'controller' => 'user_control',
     'action'     => 'resetPassword',
 ]);
+
+$router->notFound(
+    [
+        'controller' => 'index',
+        'action'     => 'notfound',
+    ]
+);
