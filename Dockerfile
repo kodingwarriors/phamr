@@ -19,7 +19,7 @@ RUN set -xe && \
             libxpm-dev \
             gd \
             postgresql \
-        && docker-php-ext-install pdo pdo_pgsql gd \
+        && docker-php-ext-install pdo php81-pdo_pgsql gd \
         && pecl install phalcon-5.1.2 \
         && docker-php-ext-enable phalcon \
 #        && docker-php-source extract \
