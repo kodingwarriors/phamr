@@ -1,0 +1,48 @@
+<?php
+/**
+ * Created by Phamr-Cli
+ * (c) Kodingwarriors <kodingwarriors.github.io>
+ * Date: !date
+ * Time: !time
+ */
+
+namespace Phamr\Modules\Frontend;
+use Phalcon\Di\DiInterface;
+use Phalcon\Autoload\Loader;
+use Phalcon\Mvc\ModuleDefinitionInterface;
+
+class Modules implements ModuleDefinitionInterface
+{
+    /**
+     * DiInterface|null $di
+     * @return void
+     */
+    public function registerAutoloaders(DiInterface $di = null)
+    {
+        $loader = new Loader();
+        $loader->setNamespaces(
+            [
+                "Phamr\\Modules\\!modules\\Controllers" => __DIR__.'/controllers/',
+                "Phamr\\Modules\\!modules\\Models" => __DIR__.'/models/',
+                "Phamr\\Modules\\!modules\\Plugin" => __DIR__.'/plugin/',
+            ]
+        );
+        $loader->register();
+    }
+
+    /**
+     * @param DiInterface $di
+     * @return void
+     */
+    public function registerServices(DiInterface $di)
+    {
+        $config = $di->getShared('config');
+        $view = $di->getShared('view');
+        $viewsDir = $config->path('application.viewsDir');
+        $view->setViewsDir(__DIR__. '/views/');
+        $view->setMainView('main');
+        $view->setLayoutsDir($viewsDir."layouts/");
+        $view->setLayout('public');
+
+    }
+}

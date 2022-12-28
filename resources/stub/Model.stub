@@ -1,0 +1,31 @@
+<?php
+/**
+ * Created by Phamr-Cli
+ * (c) Kodingwarriors <kodingwarriors.github.io>
+ * Date: !date
+ * Time: !time
+ */
+
+namespace Phamr\Modules\!module\Models;
+use \Phalcon\Mvc\Model\Behavior\Timestampable;
+class !name extends \Phalcon\Mvc\Model
+{
+
+    /**
+     *
+     * @var integer
+     * @Primary
+     * @Identity
+     * @Column(type="integer", length=10, nullable=false)
+     */
+    public $id;
+
+    !column
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", nullable=true)
+     */
+    public $updated;
+}
