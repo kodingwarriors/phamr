@@ -21,9 +21,7 @@
     "php": ">=7.4",
     "ext-openssl": "*",
     "ext-phalcon": "^5.0",
-    "vlucas/phpdotenv": "^3.6",
-    "robmorgan/phinx": "^0.13.3",
-    "symfony/yaml": "^6.2"
+    "vlucas/phpdotenv": "^3.6"
   },
   "suggest": {
     "ext-apc": "Needed to support caching ACL"
